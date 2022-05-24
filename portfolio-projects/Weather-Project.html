@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../css/style.css" />
     <script defer src="../js/script.js"></script>
   </head>
-  <body>
+  <body id="body-p-weather">
     <nav class="navbar">
       <div class="nav__content">
         <div class="nav__logo">
@@ -54,14 +54,16 @@
 
     <section class="weather__section">
       <div class="weather__template">
+        <h2 class="weather__template-title">Fast Weather Info</h2>
         <div class="weather__search">
-          <input type="text" class="weather__search-bar" placeholder="Search" />
+          <input type="text" class="weather__search-bar" placeholder="Search country name" />
           <button class="weather__search-icon">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
+        
         <div class="weather-info loading">
-          <h2 class="weather-city">Weather in Albania</h2>
+          <!-- <h2 class="weather-city">Weather in Albania</h2>
           <h1 class="weather-temp">51°C</h1>
           <div class="flex">
             <img
@@ -73,7 +75,7 @@
           </div>
           <div class="weather-humidity">Humidity: 60%</div>
           <div class="weather-wind">Wind speed: 6.2 km/h</div>
-        </div>
+        </div> -->
       </div>
     </section>
 

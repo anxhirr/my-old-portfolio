@@ -87,18 +87,21 @@ socialIcons.forEach(sIcon => {
 
 // TO-DO PROJECT //
 
-const newTaskForm = document.querySelector('.new-task-form');
-const userInput = document.querySelector('#new-task-input');
-const tasks = document.querySelector('#tasks');
+let page = document.body.id;
 
-newTaskForm.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!userInput.value) {
-    alert('Please Add a Task Before Submiting');
-    return;
-  }
+if (page === 'body-p-todo') {
+  const newTaskForm = document.querySelector('.new-task-form');
+  const userInput = document.querySelector('#new-task-input');
+  const tasks = document.querySelector('#tasks');
 
-  const taskHtml = `
+  newTaskForm.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!userInput.value) {
+      alert('Please Add a Task Before Submiting');
+      return;
+    }
+
+    const taskHtml = `
   <div class="tasks__task">
     <div class="task__content">
      <input
@@ -114,24 +117,84 @@ newTaskForm.addEventListener('submit', e => {
   </div>
 </div>`;
 
-  tasks.insertAdjacentHTML('afterbegin', taskHtml);
+    tasks.insertAdjacentHTML('afterbegin', taskHtml);
 
-  const btnEditTask = document.querySelector('.btn-edit');
-  const btnDeleteTask = document.querySelector('.btn-delete');
+    const btnEditTask = document.querySelector('.btn-edit');
+    const btnDeleteTask = document.querySelector('.btn-delete');
 
-  btnDeleteTask.addEventListener('click', () => {
-    btnDeleteTask.closest('.tasks__task').remove();
+    btnDeleteTask.addEventListener('click', () => {
+      btnDeleteTask.closest('.tasks__task').remove();
+    });
+
+    btnEditTask.addEventListener('click', () => {
+      const taskEditEL = document.querySelector('.task__content-text');
+      if (btnEditTask.innerText.toLowerCase() == 'edit') {
+        taskEditEL.removeAttribute('readonly');
+        taskEditEL.focus();
+        btnEditTask.innerText = 'Save';
+      } else {
+        taskEditEL.setAttribute('readonly', 'readonly');
+        btnEditTask.innerText = 'Edit';
+      }
+    });
   });
+}
 
-  btnEditTask.addEventListener('click', () => {
-    const taskEditEL = document.querySelector('.task__content-text');
-    if (btnEditTask.innerText.toLowerCase() == 'edit') {
-      taskEditEL.removeAttribute('readonly');
-      taskEditEL.focus();
-      btnEditTask.innerText = 'Save';
-    } else {
-      taskEditEL.setAttribute('readonly', 'readonly');
-      btnEditTask.innerText = 'Edit';
-    }
+// WEATHER PROJECT
+
+// const getWeather = async function (lat, lon) {
+//   const resWeather = await fetch(
+//     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9b52766a465fb64aedd5bbbe78a41344`
+//   );
+//   const weatherData = await resWeather.json();
+// };
+
+if ((page = 'body-p-weather')) {
+  let lon;
+  let lat;
+  const userCountryInput = document.querySelector('.weather__search-bar');
+  const btnSearch = document.querySelector('.weather__search-icon');
+  const weatherInfoContainer = document.querySelector('.weather-info');
+
+  const getWeather = async function (country) {
+    const resCountry = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=9b52766a465fb64aedd5bbbe78a41344`
+    );
+    const countryData = await resCountry.json();
+    displayWeather(countryData);
+  };
+
+  const displayWeather = function (countryData) {
+    console.log(countryData);
+    const toDisplayHtml = `
+  <h2 class="weather-city">Weather in ${countryData.name}</h2>
+      <h1 class="weather-temp">${countryData.main.temp}°C</h1>
+         <div class="flex">
+            <img
+              src="https://openweathermap.org/img/wn/${countryData.weather[0].icon}.png"
+              alt=""
+              class="icon"
+            />
+           <div class="weather-description">${countryData.weather[0].description}</div>
+          </div>
+        <div class="weather-humidity">Total Clouds: ${countryData.clouds.all}</div>
+      <div class="weather-wind">Wind speed: ${countryData.wind.speed} km/h</div>
+  `;
+    weatherInfoContainer.insertAdjacentHTML('afterbegin', toDisplayHtml);
+  };
+  // getWeather('germany');
+
+  btnSearch.addEventListener('click', () => {
+    getWeather(userCountryInput.value);
   });
-});
+}
+
+// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
+// https://api.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
+
+// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+// 9b52766a465fb64aedd5bbbe78a41344
+
+// https://api.openweathermap.org/data/2.5/weather?lat=52&lon=37&appid=9b52766a465fb64aedd5bbbe78a41344

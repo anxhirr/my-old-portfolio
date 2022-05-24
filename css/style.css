@@ -785,6 +785,7 @@ input.weather__search-bar {
   font-family: inherit;
   font-size: 100%;
   width: calc(100% - 50px);
+  margin-bottom: 2rem;
 }
 
 .weather__search {
@@ -795,4 +796,23 @@ input.weather__search-bar {
 button.weather__search-icon:hover {
   background: purple;
   transform: scale(1.2);
+}
+
+/* .weather-info.loading {
+  visibility: hidden;
+  max-height: 20px;
+  position: relative;
+}
+
+.weather-info.loading:after {
+  visibility: visible;
+  content: 'Loading...';
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 20px;
+} */
+
+.weather__template-title {
+  margin-bottom: 2rem;
 }
