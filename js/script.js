@@ -120,8 +120,6 @@ newTaskForm.addEventListener('submit', e => {
   const btnDeleteTask = document.querySelector('.btn-delete');
 
   btnDeleteTask.addEventListener('click', () => {
-    console.log('sadfhjsdkal');
-    console.log(btnDeleteTask.closest('.tasks__task'));
     btnDeleteTask.closest('.tasks__task').remove();
   });
 });
