@@ -612,3 +612,139 @@ h3 {
     margin-top: 0.5rem;
   }
 }
+
+/* TO-DO PROJECT */
+
+/* #new-task-input {
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem 1rem;
+  padding: 1rem;
+  font-size: var(--fs-h3);
+}
+
+#tasks .task {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  color: var(--clr-light);
+  font-size: var(--fs-h3);
+  width: 100%;
+  display: block;
+  transition: 0.4s;
+}
+
+main {
+  padding: 1rem;
+}
+
+.actions {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.task .content {
+  flex: 1 1 0%;
+} */
+
+.to-do__section {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* background: var(--clr-bg-light); */
+}
+
+.to-do__header {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.to-do__header h1 {
+  margin-bottom: 1rem;
+  color: var(--clr-primary);
+}
+
+.new-task-form {
+  display: flex;
+}
+
+#new-task-input,
+.task__content-text {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+#new-task-input {
+  flex: 1 1 0%;
+  background-color: var(--clt-bg-dark);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  color: var(--clr-primary);
+  font-size: var(--fs-h3);
+}
+
+#new-task-input::placeholder {
+  color: var(--clr-primary);
+}
+
+.tasks__container {
+  flex: 1 1 0%;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tasks--list {
+  padding: 1rem;
+}
+
+.tasks--list h2 {
+  margin-bottom: 1rem;
+}
+
+.tasks__task {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.task__content-text {
+  display: block;
+  color: white;
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.task__content-text:not(:read-only) {
+  color: var(--clr-primary);
+}
+
+.task__actions {
+  display: flex;
+  margin: 0 -0.5rem;
+}
+
+.task__actions button {
+  margin: 0 0.5rem;
+}
+
+.btn-edit {
+  background: var(--clr-accent);
+}
+.btn-delete {
+  background: red;
+}
