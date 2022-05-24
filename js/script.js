@@ -122,4 +122,16 @@ newTaskForm.addEventListener('submit', e => {
   btnDeleteTask.addEventListener('click', () => {
     btnDeleteTask.closest('.tasks__task').remove();
   });
+
+  btnEditTask.addEventListener('click', () => {
+    const taskEditEL = document.querySelector('.task__content-text');
+    if (btnEditTask.innerText.toLowerCase() == 'edit') {
+      taskEditEL.removeAttribute('readonly');
+      taskEditEL.focus();
+      btnEditTask.innerText = 'Save';
+    } else {
+      taskEditEL.setAttribute('readonly', 'readonly');
+      btnEditTask.innerText = 'Edit';
+    }
+  });
 });
