@@ -162,6 +162,10 @@ h3 {
 .nav__item {
   list-style: none;
 }
+
+.highlight {
+  color: red;
+}
 .nav__link {
   color: #fff;
   font-size: var(--fs-h3);
@@ -171,7 +175,7 @@ h3 {
   transition: all 0.3s ease;
 }
 .nav__link:hover {
-  color: var(--clr-primary);
+  color: red;
 }
 
 .nav__icon {
@@ -739,4 +743,56 @@ h3 {
 }
 .btn-delete {
   background: red;
+}
+
+/* WEATHER PROJECT  */
+
+section.weather__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: slategrey;
+}
+
+.weather__template {
+  background: black;
+  padding: 2em;
+  border-radius: 2rem;
+  max-width: 700px;
+  margin: 1em;
+}
+
+button.weather__search-icon {
+  margin: 0.5em;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  color: white;
+  background: slategrey;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+input.weather__search-bar {
+  border: none;
+  outline: none;
+  padding: 0.7em 1em;
+  border-radius: 1rem;
+  background: thistle;
+  color: white;
+  font-family: inherit;
+  font-size: 100%;
+  width: calc(100% - 50px);
+}
+
+.weather__search {
+  display: flex;
+  justify-content: center;
+}
+
+button.weather__search-icon:hover {
+  background: purple;
+  transform: scale(1.2);
 }
