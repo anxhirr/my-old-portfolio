@@ -142,50 +142,60 @@ if (page === 'body-p-todo') {
 
 // WEATHER PROJECT
 
-// const getWeather = async function (lat, lon) {
-//   const resWeather = await fetch(
-//     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=9b52766a465fb64aedd5bbbe78a41344`
-//   );
-//   const weatherData = await resWeather.json();
-// };
-
-if ((page = 'body-p-weather')) {
-  let lon;
-  let lat;
+if (page == 'body-p-weather') {
   const userCountryInput = document.querySelector('.weather__search-bar');
   const btnSearch = document.querySelector('.weather__search-icon');
   const weatherInfoContainer = document.querySelector('.weather-info');
+  const weatherSection = document.querySelector('.weather__section');
+  const weatherSearchBar = document.querySelector('.weather__search-bar');
 
   const getWeather = async function (country) {
-    const resCountry = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=9b52766a465fb64aedd5bbbe78a41344`
-    );
-    const countryData = await resCountry.json();
-    displayWeather(countryData);
+    try {
+      const resCountry = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${country}&appid=9b52766a465fb64aedd5bbbe78a41344`
+      );
+      const countryData = await resCountry.json();
+      displayWeather(countryData);
+    } catch (error) {
+      alert('City not Found');
+    }
   };
 
   const displayWeather = function (countryData) {
-    console.log(countryData);
     const toDisplayHtml = `
   <h2 class="weather-city">Weather in ${countryData.name}</h2>
-      <h1 class="weather-temp">${countryData.main.temp}°C</h1>
+      <h1 class="weather-temp">${Math.round(
+        countryData.main.temp - 273.15
+      )}°C</h1>
          <div class="flex">
             <img
-              src="https://openweathermap.org/img/wn/${countryData.weather[0].icon}.png"
+              src="https://openweathermap.org/img/wn/${
+                countryData.weather[0].icon
+              }.png"
               alt=""
               class="icon"
             />
-           <div class="weather-description">${countryData.weather[0].description}</div>
+           <div class="weather-description">${
+             countryData.weather[0].description
+           }</div>
           </div>
-        <div class="weather-humidity">Total Clouds: ${countryData.clouds.all}</div>
+        <div class="weather-humidity">Total Clouds: ${
+          countryData.clouds.all
+        }</div>
       <div class="weather-wind">Wind speed: ${countryData.wind.speed} km/h</div>
   `;
     weatherInfoContainer.insertAdjacentHTML('afterbegin', toDisplayHtml);
+
+    weatherSection.style.backgroundImage = `url(https://source.unsplash.com/1600x900/?${countryData.name})`;
   };
   // getWeather('germany');
 
   btnSearch.addEventListener('click', () => {
     getWeather(userCountryInput.value);
+  });
+
+  weatherSearchBar.addEventListener('keypress', e => {
+    if (e.key == 'Enter') getWeather(userCountryInput.value);
   });
 }
 

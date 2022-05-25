@@ -173,6 +173,7 @@ h3 {
   margin-left: 25px;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .nav__link:hover {
   color: red;
@@ -405,6 +406,7 @@ h3 {
 
 .footer__link {
   font-weight: var(--fw-bold);
+  cursor: pointer;
 }
 
 .footer__link:hover,
@@ -526,7 +528,7 @@ h3 {
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
   border: 1rem solid var(--clr-primary);
-  border-radius: 10px;
+  border-radius: 3rem;
   z-index: 10;
   background-color: var(--clr-light);
   color: black;
@@ -559,6 +561,10 @@ h3 {
   background: none;
   font-style: var(--fs-h1);
   font-weight: var(--fw-bold);
+}
+
+btn--close-modal:hover {
+  font-size: 2rem;
 }
 
 .modal__content {
@@ -596,7 +602,7 @@ h3 {
 }
 
 .modal__form input {
-  padding: 1rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
 }
@@ -604,6 +610,7 @@ h3 {
 .btn--submit-modal {
   grid-column: 1 / span 2;
   justify-self: center;
+  padding: 0.7rem 1.5rem;
 }
 
 @media (max-width: 600px) {
@@ -747,32 +754,37 @@ h3 {
 
 /* WEATHER PROJECT  */
 
-section.weather__section {
+.weather__section {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: slategrey;
+  background: #0d1117;
 }
 
 .weather__template {
-  background: black;
+  background: rgba(0, 0, 0, 0.9);
   padding: 2em;
   border-radius: 2rem;
   max-width: 700px;
   margin: 1em;
 }
 
-button.weather__search-icon {
-  margin: 0.5em;
+.weather__search-icon {
+  margin-left: 0.5em;
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
-  color: white;
-  background: slategrey;
+  width: 2.5em;
+  height: 2.5em;
+  color: black;
+  background: var(--clr-light);
   cursor: pointer;
   transition: 0.3s ease-in-out;
+}
+
+.weather__search-icon:hover {
+  background: var(--clr-primary);
+  transform: scale(1.2);
 }
 
 input.weather__search-bar {
@@ -780,7 +792,7 @@ input.weather__search-bar {
   outline: none;
   padding: 0.7em 1em;
   border-radius: 1rem;
-  background: thistle;
+  background: var(--clr-primary);
   color: white;
   font-family: inherit;
   font-size: 100%;
@@ -788,14 +800,13 @@ input.weather__search-bar {
   margin-bottom: 2rem;
 }
 
+::placeholder {
+  color: white;
+}
+
 .weather__search {
   display: flex;
   justify-content: center;
-}
-
-button.weather__search-icon:hover {
-  background: purple;
-  transform: scale(1.2);
 }
 
 /* .weather-info.loading {
