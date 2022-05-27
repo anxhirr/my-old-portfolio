@@ -175,6 +175,7 @@ if (page == 'body-p-weather') {
         }</div>
       <div class="weather-wind">Wind speed: ${countryData.wind.speed} km/h</div>
   `;
+    weatherInfoContainer.innerHTML = '';
     weatherInfoContainer.insertAdjacentHTML('afterbegin', toDisplayHtml);
 
     weatherSection.style.backgroundImage = `url(https://source.unsplash.com/1600x900/?${countryData.name})`;
