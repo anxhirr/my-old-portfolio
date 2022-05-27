@@ -9,7 +9,7 @@ const cancelBtn = document.querySelector('.nav__cancel-btn');
 const modal = document.querySelector('.modal');
 const btnsOpenModal = document.querySelectorAll('.open-modal--btn');
 const btnsCloseModal = document.querySelectorAll('.btn--close-modal');
-const modalOverlay = document.querySelector('#modal--overlay');
+const modalOverlay = document.querySelector('.overlay');
 
 const imgs = document.querySelector('img');
 const socialIcons = document.querySelectorAll('.social-list__link');
@@ -47,33 +47,24 @@ window.onscroll = () => {
 
 const openModal = function (modal) {
   if (!modal) return;
-  modal.classList.add('active');
-  modalOverlay.classList.add('active');
+  modal.classList.remove('hidden');
+  modalOverlay.classList.remove('hidden');
 };
 
 const closeModal = function (modal) {
   if (!modal) return;
-  modal.classList.remove('active');
-  modalOverlay.classList.remove('active');
+  modal.classList.add('hidden');
+  modalOverlay.classList.add('hidden');
 };
 
 btnsOpenModal.forEach(openButton => {
   openButton.addEventListener('click', () => {
     openModal(modal);
-    imgs.style.visibility = 'hidden';
   });
 });
 
 btnsCloseModal.forEach(closeButton => {
   closeButton.addEventListener('click', () => {
-    closeModal(modal);
-    imgs.style.visibility = 'unset';
-  });
-});
-
-modalOverlay.addEventListener('click', () => {
-  const modals = document.querySelectorAll('.modal.active');
-  modals.forEach(modal => {
     closeModal(modal);
   });
 });
@@ -208,3 +199,51 @@ if (page == 'body-p-weather') {
 // 9b52766a465fb64aedd5bbbe78a41344
 
 // https://api.openweathermap.org/data/2.5/weather?lat=52&lon=37&appid=9b52766a465fb64aedd5bbbe78a41344
+
+/// REVEALING ELEMENTS ON SCROLL
+
+const sections = document.querySelectorAll('section');
+
+const secObserver = new IntersectionObserver(
+  (entries, observer) => {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove('hidden');
+    observer.unobserve(entry.target);
+  },
+  {
+    root: null,
+    threshold: 0.1,
+  }
+);
+sections.forEach(sec => {
+  secObserver.observe(sec);
+});
+
+///LAZY LOADING IMGS
+
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const imgObserver = new IntersectionObserver(
+  (entries, observer) => {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+
+    entry.target.src = entry.target.dataset.src;
+
+    entry.target.addEventListener(
+      'load',
+      entry.target.classList.remove('lazy-img')
+    );
+    observer.unobserve(entry.target);
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: '-200px',
+  }
+);
+
+imgTargets.forEach(img => {
+  imgObserver.observe(img);
+});

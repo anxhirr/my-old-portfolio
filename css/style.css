@@ -99,8 +99,34 @@ h3 {
   font-size: var(--fs-h3);
 }
 
+.header {
+  padding: 0 3rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  transition: transform 1s, opacity 1s;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8rem);
+}
+
 .section__title {
   margin-bottom: 0.25em;
+}
+
+img {
+  transition: filter 0.5s;
+}
+
+.lazy-img {
+  filter: blur(20px);
 }
 
 .section__title--intro {
@@ -253,7 +279,14 @@ h3 {
 /* INTRO SECTION */
 
 .intro {
-  position: relative;
+  flex: 1;
+  max-width: 115rem;
+  grid-template-columns: 3fr 2fr;
+  row-gap: 3rem;
+  align-content: center;
+  justify-content: center;
+  align-items: start;
+  justify-items: start;
 }
 .intro__img {
   box-shadow: var(--box-shadow);
@@ -520,25 +553,29 @@ h3 {
 } */
 
 /* CONTACT ME MODAL  */
-
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
-  border: 1rem solid var(--clr-primary);
-  border-radius: 3rem;
-  z-index: 10;
-  background-color: var(--clr-light);
-  color: black;
-  /* CAREFUL  */
-  width: 500px;
-  max-width: 80%;
+  transform: translate(-50%, -50%);
+  max-width: 60rem;
+  border-radius: 2rem;
+  background-color: var(--clr-bg-light);
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.5s;
 }
 
-.modal.active {
-  transform: translate(-50%, -50%) scale(1);
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  transition: all 0.5s;
 }
 
 .modal__header {
@@ -571,23 +608,6 @@ btn--close-modal:hover {
   padding: 10px 15px;
 }
 
-#modal--overlay {
-  position: fixed;
-  opacity: 0;
-  transition: 200ms ease-in-out;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--clr-bg-light);
-  pointer-events: none;
-}
-
-#modal--overlay.active {
-  pointer-events: all;
-  opacity: 1;
-}
-
 .modal__form {
   padding: 2rem 2rem;
   display: grid;
@@ -605,6 +625,7 @@ btn--close-modal:hover {
   padding: 0.6rem 1.5rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
+  color: black;
 }
 
 .btn--submit-modal {

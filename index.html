@@ -24,52 +24,57 @@
     <script defer src="js/script.js"></script>
   </head>
   <body id="body-homepage">
-    <nav class="navbar">
-      <div class="nav__content">
-        <div class="nav__logo">
-          <a class="nav__logo-title" href="#"
-            ><span class="highlight">Po</span>rtfo<span class="highlight"
-              >lio</span
-            ></a
-          >
-        </div>
-        <ul class="nav__list">
-          <div class="nav__icon nav__cancel-btn">
-            <i class="fas fa-times"></i>
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav__content">
+          <div class="nav__logo">
+            <a class="nav__logo-title" href="#"
+              ><span class="highlight">Po</span>rtfo<span class="highlight"
+                >lio</span
+              ></a
+            >
           </div>
-          <li class="nav__item"><a class="nav__link" href="#home">Home</a></li>
-          <li class="nav__item">
-            <a class="nav__link" href="#about-me">About</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#projects">Projects</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link open-modal--btn">Contact</a>
-          </li>
-        </ul>
-        <div class="nav__icon nav__menu-btn">
-          <i class="fas fa-bars"></i>
+          <ul class="nav__list">
+            <div class="nav__icon nav__cancel-btn">
+              <i class="fas fa-times"></i>
+            </div>
+            <li class="nav__item">
+              <a class="nav__link" href="#home">Home</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#about-me">About</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#projects">Projects</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link open-modal--btn">Contact</a>
+            </li>
+          </ul>
+          <div class="nav__icon nav__menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
         </div>
+      </nav>
+
+      <!-- INTRODUCTION -->
+
+      <div class="intro" id="home">
+        <h1 class="section__title section__title--intro">
+          Hi, I am <strong>Anxhi Rroshi</strong>
+        </h1>
+        <p class="section__subtitle section__subtitle--intro">FRONT-END DEV</p>
+        <img
+          src="images/me-lazy-img-1.jpg"
+          data-src="images/me-img-1.jpg"
+          alt="a picture of anxhi cheering"
+          class="intro__img lazy-img"
+        />
       </div>
-    </nav>
-
-    <!-- INTRODUCTION -->
-
-    <section class="intro" id="home">
-      <h1 class="section__title section__title--intro">
-        Hi, I am <strong>Anxhi Rroshi</strong>
-      </h1>
-      <p class="section__subtitle section__subtitle--intro">FRONT-END DEV</p>
-      <img
-        src="images/me-img-1.jpg"
-        alt="a picture of anxhi cheering"
-        class="intro__img"
-      />
-    </section>
+    </header>
 
     <!-- MY SERVICES -->
-    <section class="my-services" id="services">
+    <section class="my-services hidden" id="services">
       <h2 class="section__title section__title--services">What I do</h2>
       <div class="services">
         <div class="service">
@@ -107,34 +112,34 @@
     </section>
 
     <!-- ABOUT ME -->
-    <section class="about-me" id="about-me">
+    <section class="about-me hidden" id="about-me">
       <h2 class="section__title section__title--about">Who I am</h2>
       <p class="section__subtitle section__subtitle--about">
         Appasionete Designer & developer
       </p>
       <div class="about-me__body">
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-          perspiciatis, accusamus blanditiis quis maiores quam corrupti ad sequi
-          est id velit porro mollitia, perferendis earum asperiores alias
-          deserunt! Nam, nesciunt?
+          I am a positive, enthusiastic and competent Web Developer.I take my
+          work as a Web Developer seriously and this means I always ensure my
+          skills are kept up to date within this rapidly changing industry.
         </p>
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-          accusantium porro quis sint placeat iure, repellat fuga, provident
-          excepturi incidunt molestias est quas debitis nobis sequi. Officia
-          explicabo praesentium suscipit.
+          If you hire me as your Web Developer, I assure you I will fit into
+          your team quickly, I will always put the commercial needs of your
+          business at the forefront of everything I do, and the work I carry out
+          will be consistent to a first-class standard.
         </p>
       </div>
       <img
-        src="images/me-img-2.jpg"
+        src="images/me-lazy-img-2.jpg"
+        data-src="images/me-img-2.jpg"
         alt="Anxhi standing"
-        class="about-me__img"
+        class="about-me__img lazy-img"
       />
     </section>
 
     <!-- MY PROJECTS -->
-    <section id="projects">
+    <section class="hidden" id="projects">
       <div class="projects">
         <div class="projects--title">
           <h2>My Projects</h2>
@@ -142,20 +147,17 @@
         <div class="projects--box">
           <div class="card">
             <i class="fa-solid fa-building-columns"></i>
-            <h5>Mapty</h5>
+            <h5>Bankist</h5>
             <div class="pra">
               <p>
-                Running, Cycling. Distance. Duration. Cadence. Elev Gain.  
-                All in one single webpage</p> 
-
-                <!-- Coming Soon... Bankist is a minimalist online banking
+                Coming Soon... Bankist is a minimalist online banking
                 application that allows the user to do very mininmal bank
-                operations -->
+                operations
               </p>
               <p style="text-align: center">
                 <a
                   class="btn btn--learn__more"
-                  href="/portfolio-projects/Mapty/index.html"
+                  href="/portfolio-projects/project-1.html"
                   target="_blank"
                   >Learn More</a
                 >
@@ -234,8 +236,9 @@
         </li>
       </ul>
     </footer>
+
     <!-- CONTACT MODAL -->
-    <div class="modal" id="modal">
+    <div class="modal hidden" id="modal">
       <div class="modal__header">
         <div class="modal__header-title">Contact Me</div>
         <button class="btn--close-modal">&times;</button>
@@ -250,6 +253,6 @@
         <button class="btn btn--submit-modal">Submit&rarr;</button>
       </form>
     </div>
-    <div id="modal--overlay"></div>
+    <div class="overlay hidden"></div>
   </body>
 </html>
