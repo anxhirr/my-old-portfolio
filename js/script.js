@@ -221,29 +221,26 @@ sections.forEach(sec => {
 });
 
 ///LAZY LOADING IMGS
-
 const imgTargets = document.querySelectorAll('img[data-src]');
 
 const imgObserver = new IntersectionObserver(
   (entries, observer) => {
-    const [entry] = entries;
-    if (!entry.isIntersecting) return;
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.src = entry.target.dataset.src;
 
-    entry.target.src = entry.target.dataset.src;
-
-    entry.target.addEventListener(
-      'load',
-      entry.target.classList.remove('lazy-img')
-    );
-    observer.unobserve(entry.target);
+      entry.target.addEventListener('load', function () {
+        this.classList.remove('lazy-img');
+      });
+      observer.unobserve(entry.target);
+    });
   },
   {
     root: null,
     threshold: 0,
-    rootMargin: '-200px',
+    rootMargin: '0px 0px -200px 0px',
   }
 );
-
 imgTargets.forEach(img => {
   imgObserver.observe(img);
 });
